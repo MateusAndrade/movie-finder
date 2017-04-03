@@ -1,0 +1,24 @@
+{
+  "name": "movie-game",
+  "authors": [
+    "MateusAndrade <mateus.andrade47@outlook.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "bootstrap": "^3.3.7",
+    "install": "^1.0.4",
+    "angular-route": "^1.6.4"
+  }
+}

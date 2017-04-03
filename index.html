@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="movies">
+<head>
+    <title>Movie Generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--Styles-->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="app/assets/css/animate.css" rel="stylesheet">
+    <link href="app/assets/css/vanilla.css" rel="stylesheet">
+    <!--Scripts-->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <!--Imports-->
+    <script src="app/app.js"></script>
+    <script src="app/controller/IndexController.js"></script>
+    <script src="app/directive/SearchFormDirective.js"></script>
+    <script src="app/route/RouteProvider.js"></script>
+</head>
+<body class="background-page" ng-controller="indexController">
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+            Movies Info
+        </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="row margin-logo-cinema animated fadeInDown" ng-show="movie == undefined">
+        <div class="col-md-6">
+            <img class="center-block" src="app/assets/imgs/icon-cinema1.png" width="150">
+        </div>
+    </div>
+
+    <div class="row animated fadeInDown" ng-show="movie != undefined">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p style="margin:0;padding:0;" class="text-center"><b>{{ movie.Title }}</b></p>
+                </div>
+                <div class="panel-body">
+                    <img class="pull-left img-rounded" src="{{ movie.Poster }}" width="100">
+                    <p ><i>{{ movie.Plot }}</i></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p style="margin:0;padding:0;">Another Info</p>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Director(s):</b> {{ movie.Director }}</li>
+                        <li class="list-group-item"><b>Release:</b> {{ movie.Released }}</li>
+                        <li class="list-group-item"><b>Box Office:</b> {{ movie.BoxOffice }}</li>
+                        <li class="list-group-item"><b>Awards:</b> {{ movie.Awards }}</li>
+                        <li class="list-group-item"><b>Genre:</b> {{ movie.Genre }}</li>
+                        <li class="list-group-item"><b>Language(s):</b> {{ movie.Language }}</li>
+                        <li class="list-group-item"><b>Writer(s):</b> {{ movie.Writer }}</li>
+                        <li class="list-group-item"><b>Production:</b> {{ movie.Production }}</li>
+                        <li class="list-group-item"><b>Runtime:</b> {{ movie.Runtime }}</li>
+                        <li class="list-group-item"><b>Year:</b> {{ movie.Year }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p style="margin:0;padding:0;">Ratings</p>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="rating in movie.Ratings">
+                            <span ng-if="rating.Source == 'Internet Movie Database'">
+                                <a href="http://www.imdb.com/title/{{ movie.imdbID }}">
+                                    <img src="app/assets/imgs/imdb.png" width="50">
+                                </a> : {{ rating.Value }}   
+                            </span>
+                            <span ng-if="rating.Source == 'Rotten Tomatoes'">
+                               <img src="app/assets/imgs/rotten.png" width="50"> : {{ rating.Value }}   
+                            </span>
+                            <span ng-if="rating.Source != 'Rotten Tomatoes' && rating.Source != 'Internet Movie Database'">
+                               <b>{{ rating.Source }}</b> : {{ rating.Value }}   
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    
+    </div>
+
+    <div search-form></div>
+
+
+</div>
+
+
+</body>
+</html>
