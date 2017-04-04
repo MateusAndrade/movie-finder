@@ -1,5 +1,11 @@
 app.controller('indexController', function($scope,$http,$routeParams){
 
+    $scope.habilitaForm = function(bol){
+        $scope.formIsVisible = true;
+        console.log($scope.formIsVisible);
+        $("#menu").removeClass('in');
+    };
+
     $scope.searchMovie = function(name){
         $http({
             method : "GET",

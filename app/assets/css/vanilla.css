@@ -1,6 +1,7 @@
+body { padding-top: 70px; }
+
 .background-page{
     background-image: url('../imgs/background.jpg'); 
-    /*background-repeat:no-repeat;*/
     background-size:cover;
 }
 
@@ -8,6 +9,7 @@
     background: #2196F3;
     margin: 1px;
     padding-top:4px;
+    margin-bottom: 10px;
     border-radius: 3%;
 }
 
@@ -17,4 +19,12 @@
 
 .title{
     color:white;
+}
+
+.align-img-movie{
+    padding-right: 10px;
+}
+
+.margin-button-menu{
+    margin-right: 5px;
 }
