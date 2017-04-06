@@ -1,5 +1,12 @@
 app.controller('indexController', function($scope,$http,$routeParams){
 
+    if( localStorage.getItem('movies') == null){
+        var movies = [];
+        localStorage.setItem('movies',movies);
+    } else {
+        movies = angular.fromJson(localStorage.getItem('movies'));
+    }
+
     $scope.habilitaForm = function(bol){
         $scope.formIsVisible = true;
         console.log($scope.formIsVisible);
@@ -21,6 +28,12 @@ app.controller('indexController', function($scope,$http,$routeParams){
                 console.log('Nenhum filme encontrado.');
             }
         });
+    }
+
+    $scope.saveMovie = function(movie){
+        console.log(movies);        
+        movies.push(angular.copy(movie));
+        localStorage.setItem('movies',angular.toJson(movies));
     }
 
 });

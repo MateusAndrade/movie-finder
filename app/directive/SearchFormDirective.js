@@ -2,7 +2,7 @@ app.directive('searchForm', function(){
     return {
         restric : 'E',
         template : `
-            <div class="row background-form" ng-hide="movie != undefined" ng-show="formIsVisible == true">
+            <div class="row panel-default">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="title">Movie:</label>

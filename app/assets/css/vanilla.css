@@ -1,8 +1,8 @@
 body { padding-top: 70px; }
 
 .background-page{
-    background-image: url('../imgs/background.jpg'); 
-    background-size:cover;
+    /*background-image: url('../imgs/background.jpg'); 
+    background-size:cover;*/
 }
 
 .background-form{
@@ -27,4 +27,13 @@ body { padding-top: 70px; }
 
 .margin-button-menu{
     margin-right: 5px;
+}
+
+.button-no-style{
+    border: none;
+    background: none;
+}
+
+.icon-button{
+    max-width: 20px;
 }

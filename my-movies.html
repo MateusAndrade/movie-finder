@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="movies">
+<head>
+    <title>Movie Generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--Styles-->
+    <link href="app/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="app/assets/css/animate.css" rel="stylesheet">
+    <link href="app/assets/css/vanilla.css" rel="stylesheet">
+    <!--Scripts-->
+    <script src="app/assets/js/jquery.min.js"></script>
+    <script src="app/assets/js/bootstrap.min.js"></script>
+    <script src="app/assets/js/angular.min.js"></script>
+    <script src="app/assets/js/angular-route.min.js"></script>
+    <!--Imports-->
+    <script src="app/app.js"></script>
+    <script src="app/controller/MyMoviesController.js"></script>
+    <script src="app/directive/SearchFormDirective.js"></script>
+</head>
+<body class="background-page" ng-controller="MyMoviesController">
+
+<nav class="navbar navbar-default navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            Movies Info
+        </a>
+    </div>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="nav navbar-nav">
+        <li>
+            <a href="#" ng-click="habilitaForm(true)">
+                Search for a Movie
+            </a>
+            <a href="#">
+                Last Releases
+            </a>
+            <a href="#">
+                My Movies
+            </a>
+            <a href="#">
+                Random Movie
+            </a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="row animated fadeInDown">
+        <div class="col-md-6">
+            {{ movies }}
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
