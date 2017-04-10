@@ -37,3 +37,7 @@ body { padding-top: 70px; }
 .icon-button{
     max-width: 20px;
 }
+
+.panel-info-movie{
+    margin-top:10px;
+}

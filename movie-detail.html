@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="movies">
+<head>
+    <title>Movie Generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--Styles-->
+    <link href="app/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="app/assets/css/animate.css" rel="stylesheet">
+    <link href="app/assets/css/vanilla.css" rel="stylesheet">
+    <!--Scripts-->
+    <script src="app/assets/js/jquery.min.js"></script>
+    <script src="app/assets/js/bootstrap.min.js"></script>
+    <script src="app/assets/js/angular.min.js"></script>
+    <script src="app/assets/js/angular-route.min.js"></script>
+    <!--Imports-->
+    <script src="app/app.js"></script>
+    <script src="app/controller/MovieController.js"></script>
+</head>
+<body class="background-page" ng-controller="MovieController">
+
+<nav class="navbar navbar-default navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+            Movies Info
+        </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="row animated fadeInDown">
+        <div class="col-xs-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <p style="margin:0;padding:0;" class="text-center"><b>{{ movie.title }}</b></p>
+                </div>
+                <div class="panel-body">
+                    <img ng-show="movie.poster_path != null" class="pull-left align-img-movie" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" width="150">
+                    <img ng-show="movie.poster_path == null" class="pull-left align-img-movie" src="app/assets/imgs/no-poster.png" width="150">
+                    <p><i>{{ movie.overview }}</i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row animated fadeInDown">
+        <div class="col-xs-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Outras Informações
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Bilheteria:</b> {{ movie.revenue | currency:"USD "  }}</li>
+                        <li class="list-group-item"><b>Lançamento:</b> {{ movie.release_date | date: "dd/MM/yyyy" }}</li>
+                        <li class="list-group-item"><b>Orçamento:</b> {{ movie.budget | currency:"USD " }}</li>
+                        <li class="list-group-item"><b>Duração:</b> {{ movie.runtime }} Minutos</li>
+                        <li class="list-group-item"><b>Status:</b> {{ movie.status }}</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

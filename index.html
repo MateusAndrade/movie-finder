@@ -24,104 +24,57 @@
 <nav class="navbar navbar-default navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
         <a class="navbar-brand" href="#">
             Movies Info
         </a>
     </div>
-    <div class="collapse navbar-collapse" id="menu">
-      <ul class="nav navbar-nav">
-        <li>
-            <a href="#" ng-click="habilitaForm(true)">
-                Search for a Movie
-            </a>
-            <a href="#">
-                Last Releases
-            </a>
-            <a href="#">
-                My Movies
-            </a>
-            <a href="#">
-                Random Movie
-            </a>
-        </li>
-
-      </ul>
-    </div>
-
   </div>
 </nav>
 
 <div class="container-fluid">
 
-    <div class="row margin-logo-cinema animated fadeInDown">
-        <div class="col-md-6">
+    <div class="row" ng-hide="movies != undefined">
+        <div class="col-xs-12">
             <img class="center-block" src="app/assets/imgs/icon-cinema1.png" width="150">
+        </div>
+
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label class="title">Movie:</label>
+                <input class="form-control" type="text" ng-model="name" placeholder="Digite o Nome de um filme:">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success btn-block" ng-disabled="name == undefined" ng-click="searchMovie(name)">Pesquisar <span class="glyphicon glyphicon-ok"></span></button>                
+            </div>
         </div>
     </div>
 
-    <div search-form></div>
-
-    <div class="row animated fadeInDown" ng-show="movie != undefined">
-        <div class="col-md-6">
+    <div class="row animated fadeInDown" ng-repeat="movie in movies" ng-show="movies != undefined">
+        <div class="col-xs-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <button class="pull-right button-no-style" ng-click="saveMovie(movie)">
-                        <img class="img-responsive icon-button" src="app/assets/imgs/content-save.png">    
+                    <button class="pull-right button-no-style" ng-click="moreInfo(movie)">
+                        <img class="img-responsive icon-button" src="app/assets/imgs/info.png">    
                     </button>  
-                    <p style="margin:0;padding:0;" class="text-center"><b>{{ movie.Title }}</b></p>
+                    <p style="margin:0;padding:0;" class="text-center"><b>{{ movie.title }}</b></p>
                 </div>
                 <div class="panel-body">
-                    <img class="pull-left img-rounded align-img-movie" src="{{ movie.Poster }}" width="100">
-                    <p><i>{{ movie.Plot }}</i></p>
-                </div>
-            </div>
+                    <img ng-show="movie.poster_path != null" class="pull-left align-img-movie" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" width="150">
+                    <img ng-show="movie.poster_path == null" class="pull-left align-img-movie" src="app/assets/imgs/no-poster.png" width="150">
+                    <p><i>{{ movie.overview }}</i></p>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <p style="margin:0;padding:0;">Another Info</p>
-                </div>
-                <div class="panel-body">
-                    <ul class="list-group">
-                        <li class="list-group-item"><b>Director(s):</b> {{ movie.Director }}</li>
-                        <li class="list-group-item"><b>Release:</b> {{ movie.Released }}</li>
-                        <li class="list-group-item"><b>Box Office:</b> {{ movie.BoxOffice }}</li>
-                        <li class="list-group-item"><b>Awards:</b> {{ movie.Awards }}</li>
-                        <li class="list-group-item"><b>Genre:</b> {{ movie.Genre }}</li>
-                        <li class="list-group-item"><b>Language(s):</b> {{ movie.Language }}</li>
-                        <li class="list-group-item"><b>Writer(s):</b> {{ movie.Writer }}</li>
-                        <li class="list-group-item"><b>Production:</b> {{ movie.Production }}</li>
-                        <li class="list-group-item"><b>Runtime:</b> {{ movie.Runtime }}</li>
-                        <li class="list-group-item"><b>Year:</b> {{ movie.Year }}</li>
-                    </ul>
-                </div>
-            </div>
+                    <div class="clearfix"></div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <p style="margin:0;padding:0;">Ratings</p>
-                </div>
-                <div class="panel-body">
-                    <ul class="list-group">
-                        <li class="list-group-item" ng-repeat="rating in movie.Ratings">
-                            <span ng-if="rating.Source == 'Internet Movie Database'">
-                                <a href="http://www.imdb.com/title/{{ movie.imdbID }}">
-                                    <img src="app/assets/imgs/imdb.png" width="50">
-                                </a> : {{ rating.Value }}   
-                            </span>
-                            <span ng-if="rating.Source == 'Rotten Tomatoes'">
-                               <img src="app/assets/imgs/rotten.png" width="50"> : {{ rating.Value }}   
-                            </span>
-                            <span ng-if="rating.Source != 'Rotten Tomatoes' && rating.Source != 'Internet Movie Database'">
-                               <b>{{ rating.Source }}</b> : {{ rating.Value }}   
-                            </span>
-                        </li>
-                    </ul>
+                    <div class="panel panel-default panel-info-movie">
+                        <div class="panel-heading">
+                            Outras Informações
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Lançamento:</b> {{ movie.release_date | date: "dd/MM/yyyy" }}</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 

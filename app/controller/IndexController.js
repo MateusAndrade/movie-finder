@@ -1,28 +1,15 @@
 app.controller('indexController', function($scope,$http,$routeParams){
 
-    if( localStorage.getItem('movies') == null){
-        var movies = [];
-        localStorage.setItem('movies',movies);
-    } else {
-        movies = angular.fromJson(localStorage.getItem('movies'));
-    }
-
-    $scope.habilitaForm = function(bol){
-        $scope.formIsVisible = true;
-        console.log($scope.formIsVisible);
-        $("#menu").removeClass('in');
-    };
-
-    $scope.searchMovie = function(name){
+    $scope.searchMovie = function(movie){
         $http({
             method : "GET",
-            url : "http://www.omdbapi.com/",
+            url : "https://api.themoviedb.org/3/search/movie?api_key=52e5a9f64c7ce2377f11efdfdf1cbf61&language=pt-BR",
             params : {
-                t : name 
+                query : movie
             }
         }).then(function mySucces(response) {
-            $scope.movie = response.data;
-            console.log(response.data);
+            $scope.movies = response.data.results;
+            console.log(response.data.results);
         }, function myError(response) {
             if( reponse.response == 'False'){
                 console.log('Nenhum filme encontrado.');
@@ -30,10 +17,20 @@ app.controller('indexController', function($scope,$http,$routeParams){
         });
     }
 
-    $scope.saveMovie = function(movie){
-        console.log(movies);        
-        movies.push(angular.copy(movie));
-        localStorage.setItem('movies',angular.toJson(movies));
+    $scope.moreInfo = function(movie){
+        $http({
+            method : "GET",
+            url : "https://api.themoviedb.org/3/movie/"+movie.id+"?api_key=52e5a9f64c7ce2377f11efdfdf1cbf61&language=en-US",
+        }).then(function mySucces(response) {
+            console.log(response.data);
+            sessionStorage.setItem('movie',angular.toJson(response.data));
+            location.assign('movie-detail.html');
+        }, function myError(response) {
+            if( reponse.response == 'False'){
+                console.log('Nenhum filme encontrado.');
+            }
+        });
     }
+
 
 });
