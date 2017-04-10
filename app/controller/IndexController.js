@@ -20,7 +20,7 @@ app.controller('indexController', function($scope,$http,$routeParams){
     $scope.moreInfo = function(movie){
         $http({
             method : "GET",
-            url : "https://api.themoviedb.org/3/movie/"+movie.id+"?api_key=52e5a9f64c7ce2377f11efdfdf1cbf61&language=en-US",
+            url : "https://api.themoviedb.org/3/movie/"+movie.id+"?api_key=52e5a9f64c7ce2377f11efdfdf1cbf61&language=pt-BR",
         }).then(function mySucces(response) {
             console.log(response.data);
             sessionStorage.setItem('movie',angular.toJson(response.data));

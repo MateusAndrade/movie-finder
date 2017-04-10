@@ -41,6 +41,7 @@
                     <img ng-show="movie.poster_path != null" class="pull-left align-img-movie" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" width="150">
                     <img ng-show="movie.poster_path == null" class="pull-left align-img-movie" src="app/assets/imgs/no-poster.png" width="150">
                     <p><i>{{ movie.overview }}</i></p>
+                    <p class="text-center"><b><i>{{ movie.tagline }}</b></i></p>
                 </div>
             </div>
         </div>
@@ -50,15 +51,29 @@
         <div class="col-xs-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    Outras Informações
+                    Informações
                 </div>
                 <div class="panel-body">
                     <ul class="list-group">
+                        <li class="list-group-item disabled"><b>Dados:</b></li>                                                    
                         <li class="list-group-item"><b>Bilheteria:</b> {{ movie.revenue | currency:"USD "  }}</li>
                         <li class="list-group-item"><b>Lançamento:</b> {{ movie.release_date | date: "dd/MM/yyyy" }}</li>
                         <li class="list-group-item"><b>Orçamento:</b> {{ movie.budget | currency:"USD " }}</li>
                         <li class="list-group-item"><b>Duração:</b> {{ movie.runtime }} Minutos</li>
                         <li class="list-group-item"><b>Status:</b> {{ movie.status }}</li>
+                        <li class="list-group-item"><b>Língua Original:</b> {{ movie.original_language }}</li>
+                    </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item disabled"><b>Genêro(s):</b></li>                            
+                        <li class="list-group-item" ng-repeat="genero in movie.genres"><b>Genêro:</b> {{ genero.name }}</li>
+                    </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item disabled"><b>Produtora(s):</b></li>                            
+                        <li class="list-group-item" ng-repeat="produtora in movie.production_companies"><b>Produtora:</b> {{ produtora.name }}</li>
+                    </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item disabled"><b>Lingua(s):</b></li>                            
+                        <li class="list-group-item" ng-repeat="lingua in movie.spoken_languages"><b>Língua:</b> {{ lingua.name }}</li>
                     </ul>
                 </div>
             </div>
