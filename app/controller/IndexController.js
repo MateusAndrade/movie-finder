@@ -1,5 +1,6 @@
 app.controller('indexController', function($scope,$http,$routeParams){
 
+
     $scope.searchMovie = function(movie){
         $http({
             method : "GET",
@@ -16,7 +17,6 @@ app.controller('indexController', function($scope,$http,$routeParams){
             }
         });
     }
-
     $scope.moreInfo = function(movie){
         $http({
             method : "GET",

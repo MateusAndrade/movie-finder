@@ -4,17 +4,12 @@ app.config(['$routeProvider','$locationProvider', function( $routeProvider, $loc
 
         //inicia configuração de rotas
         $routeProvider
-        .when('/livro/:id',{
-            templateUrl : 'livro.html',
-            controller : 'livroController'
-        })
-        .when('/livro/:id/capitulo/:idCap',{
-            templateUrl : 'capitulo.html',
-            controller : 'capituloController'
+        .when('/pesquisa',{
+            templateUrl : 'app/views/form-pesquisa.html'
         })
         .otherwise({
             redirectTo : '/',
-            controller : 'controller/IndexController'            
+            templateUrl : 'app/views/menu-principal.html'           
         });
 
 }]); 
