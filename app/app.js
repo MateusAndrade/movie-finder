@@ -25,9 +25,25 @@ var app = angular.module('movies',['ngRoute']);
               
           };
 
+          var _saveMovie = function(movie){
+                var movies = [];
+                if(localStorage.getItem('my_movies')){
+                    movies = angular.fromJson(localStorage.getItem('my_movies'));
+                    movies.push(movie);
+                    localStorage.setItem('my_movies',angular.toJson(movies));
+                    return movies;                
+                } else {
+                    movies.push(movie);
+                    localStorage.setItem('my_movies',angular.toJson(movies));
+                    return movies;
+                }
+
+          };
+
           return {
               getMovies : _getMovies,
-              getMovieDetail : _getMovieDetail
+              getMovieDetail : _getMovieDetail,
+              saveMovie : _saveMovie
           }
 
        })
@@ -62,11 +78,17 @@ var app = angular.module('movies',['ngRoute']);
             };
 
        })
-       .controller('detailMovie',function($scope){
+       .controller('detailMovieController',function($scope, movieService){
             $scope.movie = angular.fromJson(sessionStorage.getItem('movie'));
+
+            $scope.saveMovie = function(movie){
+                console.log(movieService.saveMovie(movie));
+            };
+
+
        })
-       .controller('searchSerie',function($scope){
-           
+       .controller('myMovieController',function($scope){
+            $scope.movies = angular.fromJson(localStorage.getItem('my_movies'));
        })
        .controller('detailSerie',function($scope){
            

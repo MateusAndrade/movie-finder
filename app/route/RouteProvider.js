@@ -14,7 +14,11 @@ app.config(['$routeProvider','$locationProvider', function( $routeProvider, $loc
         })
         .when('/movieDetail',{
             templateUrl : 'app/views/movie-detail.html',
-            controller : 'detailMovie'
+            controller : 'detailMovieController'
+        })
+        .when('/myMovies',{
+            templateUrl : 'app/views/meus-filmes.html',
+            controller : 'myMovieController'
         })
         .otherwise({
             redirectTo : '/',

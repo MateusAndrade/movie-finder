@@ -1,0 +1,19 @@
+<div class="row animated fadeInDown" ng-repeat="movie in movies">
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <button class="pull-right button-no-style" ng-click="movieDetail(movie)">
+                    <img class="img-responsive icon-button" src="app/assets/imgs/info.png">    
+                </button>  
+                <p style="margin:0;padding:0;" class="text-center"><b>{{ movie.title }}</b></p>
+            </div>
+            <div class="panel-body">
+                <img ng-show="movie.poster_path != null" class="pull-left align-img-movie" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" width="150">
+                <img ng-show="movie.poster_path == null" class="pull-left align-img-movie" src="app/assets/imgs/no-poster.png" width="150">
+                <p><i>{{ movie.overview }}</i></p>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
