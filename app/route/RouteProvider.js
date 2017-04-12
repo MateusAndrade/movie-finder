@@ -6,7 +6,15 @@ app.config(['$routeProvider','$locationProvider', function( $routeProvider, $loc
         $routeProvider
         .when('/pesquisa',{
             templateUrl : 'app/views/form-pesquisa.html',
-            controller : 'searchMovie'
+            controller : 'searchMovieController'
+        })
+        .when('/movies',{
+            templateUrl : 'app/views/lista-filmes.html',
+            controller : 'listMoviesController'
+        })
+        .when('/movieDetail',{
+            templateUrl : 'app/views/movie-detail.html',
+            controller : 'detailMovie'
         })
         .otherwise({
             redirectTo : '/',

@@ -1,8 +1,8 @@
-<div class="row animated fadeInDown" ng-repeat="movie in movies" ng-show="movies != undefined">
+<div class="row animated fadeInDown" ng-repeat="movie in movies">
     <div class="col-xs-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <button class="pull-right button-no-style" ng-click="moreInfo(movie)">
+                <button class="pull-right button-no-style" ng-click="movieDetail(movie)">
                     <img class="img-responsive icon-button" src="app/assets/imgs/info.png">    
                 </button>  
                 <p style="margin:0;padding:0;" class="text-center"><b>{{ movie.title }}</b></p>

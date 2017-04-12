@@ -1,12 +1,15 @@
 <div class="row">
-    {{ controller }}
+    <div class="col-xs-12 align-img-home">
+        <img class="center-block" src="app/assets/imgs/3D.png" width="150">
+    </div>
+
     <div class="col-xs-12">
         <div class="form-group">
             <label class="title">Movie:</label>
-            <input class="form-control" type="text" ng-model="name" placeholder="Digite o Nome de um filme:">
+            <input class="form-control" type="text" ng-model="movie.name" placeholder="Digite o Nome de um filme:">
         </div>
         <div class="form-group">
-            <button class="btn btn-success btn-block" ng-disabled="name == undefined" ng-click="searchMovie(name)">Pesquisar <span class="glyphicon glyphicon-ok"></span></button>                
+            <button class="btn btn-success btn-block" ng-disabled="movie.name == undefined" ng-click="searchMovie(movie)">Pesquisar <span class="glyphicon glyphicon-ok"></span></button>                
         </div>
     </div>
 </div>
