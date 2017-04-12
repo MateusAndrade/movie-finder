@@ -11,4 +11,4 @@ A principal idéia do mesmo, é criar uma espécie de agregador de filmes/série
     <li><b>Salvar um filme pesquisado localmente ( consulta de imagens continua sendo externa até então ).</b></li>
 </ul>
  
-:)
+Projeto aberto a sugestões e etc. :)
