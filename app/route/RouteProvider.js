@@ -5,7 +5,8 @@ app.config(['$routeProvider','$locationProvider', function( $routeProvider, $loc
         //inicia configuração de rotas
         $routeProvider
         .when('/pesquisa',{
-            templateUrl : 'app/views/form-pesquisa.html'
+            templateUrl : 'app/views/form-pesquisa.html',
+            controller : 'searchMovie'
         })
         .otherwise({
             redirectTo : '/',
